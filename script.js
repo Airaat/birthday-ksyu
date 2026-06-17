@@ -114,6 +114,7 @@ function runBootSequence() {
   const fill = document.getElementById("progress-fill");
   const bootText = document.getElementById("boot-text");
   const titleBlock = document.getElementById("title-block");
+  const loaderBlock = document.getElementById("loader-block");
   const startBtn = document.getElementById("btn-start");
 
   let progress = 0;
@@ -127,6 +128,7 @@ function runBootSequence() {
       clearInterval(interval);
       bootText.textContent = "LOADED!";
       setTimeout(() => {
+        loaderBlock.style.display = "none";
         titleBlock.classList.add("revealed");
         startBtn.style.visibility = "visible";
         playUnlockSound();
