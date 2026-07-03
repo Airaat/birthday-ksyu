@@ -108,6 +108,8 @@ document.querySelectorAll(".back-btn").forEach(btn => {
 /* ===========================================================
    BOOT SCREEN: прогресс-бар + появление заголовка
    =========================================================== */
+let bootInterval = null;
+
 function runBootSequence() {
   const fill = document.getElementById("progress-fill");
   const bootText = document.getElementById("boot-text");
@@ -115,18 +117,25 @@ function runBootSequence() {
   const loaderBlock = document.getElementById("loader-block");
   const startBtn = document.getElementById("btn-start");
 
+  // Полный сброс состояния — важно для повторного запуска по кнопке PLAY AGAIN
+  if (bootInterval) clearInterval(bootInterval);
   let progress = 0;
+  fill.style.width = "0%";
+  bootText.innerHTML = 'SYSTEM LOADING<span class="dots">...</span>';
   startBtn.style.visibility = "hidden";
   titleBlock.classList.remove("revealed");
+  loaderBlock.classList.remove("hidden");
 
-  const interval = setInterval(() => {
+  bootInterval = setInterval(() => {
     progress += Math.random() * 12 + 4;
     if (progress >= 100) {
       progress = 100;
-      clearInterval(interval);
+      clearInterval(bootInterval);
+      bootInterval = null;
       bootText.textContent = "LOADED!";
       setTimeout(() => {
-        loaderBlock.style.display = "none";
+        // Замещаем загрузчик приветственной надписью на том же месте (кросс-фейд)
+        loaderBlock.classList.add("hidden");
         titleBlock.classList.add("revealed");
         startBtn.style.visibility = "visible";
         playUnlockSound();

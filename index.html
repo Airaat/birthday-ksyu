@@ -32,18 +32,20 @@
     <!-- ЭКРАН 0: BOOT / ЗАГРУЗКА -->
     <section class="screen active" id="screen-boot" data-screen="0">
       <div class="boot-content">
-        <div class="loader-block" id="loader-block">
-          <p class="boot-line" id="boot-text">SYSTEM LOADING<span class="dots">...</span></p>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill"></div>
+        <!-- Загрузчик и приветствие лежат на одном месте и сменяют друг друга -->
+        <div class="boot-stage">
+          <div class="loader-block" id="loader-block">
+            <p class="boot-line" id="boot-text">SYSTEM LOADING<span class="dots">...</span></p>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="boot-sub">BIRTHDAY.EXE v2026</p>
           </div>
-          <p class="boot-sub">BIRTHDAY.EXE v2026</p>
-        </div>
 
-
-        <div class="title-block" id="title-block">
-          <h1 class="glow-title">HAPPY BIRTHDAY</h1>
-          <p class="glow-name" id="girlfriend-name">КСЮША</p>
+          <div class="title-block" id="title-block">
+            <h1 class="glow-title">HAPPY BIRTHDAY</h1>
+            <p class="glow-name" id="girlfriend-name">КСЮША</p>
+          </div>
         </div>
 
         <button class="pixel-btn btn-pink blink" id="btn-start">PRESS START &gt;</button>
@@ -109,8 +111,7 @@
           <div class="node-card">
             <p class="node-date">МОМЕНТ, КОГДА ПОНЯЛ</p>
             <p class="node-text">
-              Ещё на первом свидании я заметил какая ты очаровательная и милая.
-              Но все стало понятно когда пришла пора прощаться на длительный срок.
+              Все стало понятно, когда пришла пора прощаться на длительный срок.
               Ведь как оказалось, километры для нас вовсе не преграда!
             </p>
           </div>

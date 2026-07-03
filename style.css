@@ -46,7 +46,10 @@ body {
 
 .crt {
   position: relative;
+  /* dvh учитывает динамические панели браузера на мобилках (iOS/Chrome),
+     иначе 100vh выше видимой области и появляется лишний вертикальный скролл */
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   overflow: hidden;
 }
@@ -85,6 +88,7 @@ body {
 .screen {
   display: none;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -143,6 +147,37 @@ body {
   width: 100%;
 }
 
+/* Сцена, где загрузчик и приветствие занимают одно и то же место */
+.boot-stage {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 36px;
+}
+
+.boot-stage > .loader-block,
+.boot-stage > .title-block {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.loader-block {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.loader-block.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .boot-line {
   font-size: 11px;
   color: var(--cyan);
@@ -188,19 +223,25 @@ body {
   font-size: 8px;
   color: var(--text-dim);
   letter-spacing: 1px;
-  margin: 0 0 40px;
+  margin: 0;
 }
 
 .title-block {
-  margin-bottom: 36px;
   opacity: 0;
-  transform: scale(0.9);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .title-block.revealed {
   opacity: 1;
-  transform: scale(1);
+}
+
+/* Эффект "выезд снизу вверх": стартуем ниже центра, приезжаем в центр */
+.boot-stage > .title-block {
+  transform: translateY(calc(-50% + 32px));
+}
+
+.boot-stage > .title-block.revealed {
+  transform: translateY(-50%);
 }
 
 .glow-title {
@@ -744,6 +785,15 @@ body {
 /* ===========================
    RESPONSIVE
    =========================== */
+
+/* Общий масштаб на десктопе — чтобы не приходилось вручную ставить 125%.
+   Зумим содержимое экранов, а не сам .screen (у него min-height: 100vh),
+   иначе появился бы вертикальный скролл. */
+@media (min-width: 768px) {
+  .screen > * {
+    zoom: 1.25;
+  }
+}
 
 @media (max-width: 480px) {
   .menu-grid {
