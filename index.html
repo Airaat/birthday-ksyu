@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>HAPPY BIRTHDAY KSYU</title>
+  <title>BIRTHDAY KSYU</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -47,32 +47,32 @@
         </div>
 
         <button class="pixel-btn btn-pink blink" id="btn-start">PRESS START &gt;</button>
-        <p class="insert-coin">INSERT LOVE TO CONTINUE</p>
+        <p class="insert-coin">INSERT COIN TO CONTINUE</p>
       </div>
     </section>
 
     <!-- ЭКРАН 1: МЕНЮ ВЫБОРА -->
     <section class="screen" id="screen-menu" data-screen="1">
-      <p class="screen-label">SELECT YOUR ADVENTURE</p>
+      <p class="screen-label">ВЫБЕРИ УРОВЕНЬ</p>
       <div class="menu-grid">
         <button class="menu-card card-pink" data-target="screen-story">
           <span class="menu-icon" aria-hidden="true">&#127873;</span>
-          <span class="menu-title">OUR STORY</span>
+          <span class="menu-title">НАША ИСТОРИЯ</span>
           <span class="menu-sub">с чего всё началось</span>
         </button>
         <button class="menu-card card-cyan" data-target="screen-reasons">
           <span class="menu-icon" aria-hidden="true">&#11088;</span>
-          <span class="menu-title">TOP REASONS</span>
+          <span class="menu-title">ТОП-10 ПРИЧИН</span>
           <span class="menu-sub">почему ты лучшая</span>
         </button>
         <button class="menu-card card-yellow" data-target="screen-gallery">
           <span class="menu-icon" aria-hidden="true">&#128247;</span>
-          <span class="menu-title">MEMORY CARD</span>
+          <span class="menu-title">ГАЛЕРЕЯ</span>
           <span class="menu-sub">наши моменты</span>
         </button>
         <button class="menu-card card-purple" data-target="screen-final">
           <span class="menu-icon" aria-hidden="true">&#128140;</span>
-          <span class="menu-title">FINAL LEVEL</span>
+          <span class="menu-title">ФИНАЛ</span>
           <span class="menu-sub">главное послание</span>
         </button>
       </div>
@@ -82,35 +82,46 @@
     <!-- ЭКРАН 2: НАША ИСТОРИЯ -->
     <section class="screen" id="screen-story" data-screen="2">
       <button class="back-btn" data-target="screen-menu">&lt; BACK</button>
-      <p class="screen-label">LEVEL 1 — OUR STORY</p>
+      <p class="screen-label">LEVEL 1 — НАША ИСТОРИЯ</p>
 
       <div class="story-track" id="story-track">
         <div class="story-node" data-date="ГГГГ">
           <div class="node-dot"></div>
           <div class="node-card">
-            <p class="node-date">ДЕНЬ, КОГДА МЫ ВСТРЕТИЛИСЬ</p>
-            <p class="node-text">Здесь будет твоя история — опиши момент знакомства.</p>
+            <p class="node-date">ДЕНЬ, КОГДА МЫ ПОЗНАКОМИЛИСЬ</p>
+            <p class="node-text">
+              Кто бы мог подумать что всё начнется с установки python...
+            </p>
           </div>
         </div>
         <div class="story-node" data-date="ГГГГ">
           <div class="node-dot"></div>
           <div class="node-card">
             <p class="node-date">ПЕРВОЕ СВИДАНИЕ</p>
-            <p class="node-text">Расскажи, как всё было — куда пошли, что почувствовал(а).</p>
+            <p class="node-text">
+              Обошли половину Казани, разговаривая по душам и рассказывая друг другу захватывающие истории.
+              Так мы встретили первый день лета!
+            </p>
           </div>
         </div>
         <div class="story-node" data-date="ГГГГ">
           <div class="node-dot"></div>
           <div class="node-card">
-            <p class="node-date">МОМЕНТ, КОГДА ПОНЯЛ(А)</p>
-            <p class="node-text">Опиши момент, когда понял(а), что это что-то особенное.</p>
+            <p class="node-date">МОМЕНТ, КОГДА ПОНЯЛ</p>
+            <p class="node-text">
+              Ещё на первом свидании я заметил какая ты очаровательная и милая.
+              Но все стало понятно когда пришла пора прощаться на длительный срок.
+              Ведь как оказалось, километры для нас вовсе не преграда!
+            </p>
           </div>
         </div>
         <div class="story-node" data-date="СЕГОДНЯ">
           <div class="node-dot final-dot"></div>
           <div class="node-card">
             <p class="node-date">И ВОТ МЫ ЗДЕСЬ</p>
-            <p class="node-text">Продолжение следует... уровень 2 загружен.</p>
+            <p class="node-text">
+              Гуляем летними вечерами, встречаем друг друга с работы, и строим грандиозные планы на будущее...
+            </p>
           </div>
         </div>
       </div>
@@ -119,21 +130,21 @@
     <!-- ЭКРАН 3: TOP REASONS (карточки) -->
     <section class="screen" id="screen-reasons" data-screen="3">
       <button class="back-btn" data-target="screen-menu">&lt; BACK</button>
-      <p class="screen-label">LEVEL 2 — TOP REASONS</p>
+      <p class="screen-label">LEVEL 2 — ТОП-10 ПРИЧИН</p>
 
       <div class="tab-row" id="reasons-progress"></div>
 
       <div class="reason-stage">
-        <p class="achievement-label">ACHIEVEMENT UNLOCKED</p>
+        <p class="achievement-label" id="achievement-label">ACHIEVEMENT UNLOCKED</p>
         <div class="reason-card" id="reason-card">
           <p class="reason-number" id="reason-number">#001</p>
           <p class="reason-text" id="reason-text">Причина №1 — напиши здесь, за что ты её любишь</p>
         </div>
 
         <div class="reason-nav">
-          <button class="pixel-btn btn-cyan small" id="reason-prev">&lt; PREV</button>
+          <button class="pixel-btn btn-cyan small" id="reason-prev">&lt; ПРЕД</button>
           <p class="reason-count" id="reason-count">1 / 10</p>
-          <button class="pixel-btn btn-pink small" id="reason-next">NEXT &gt;</button>
+          <button class="pixel-btn btn-pink small" id="reason-next">СЛЕД &gt;</button>
         </div>
       </div>
     </section>
@@ -141,35 +152,34 @@
     <!-- ЭКРАН 4: ГАЛЕРЕЯ / MEMORY CARD -->
     <section class="screen" id="screen-gallery" data-screen="4">
       <button class="back-btn" data-target="screen-menu">&lt; BACK</button>
-      <p class="screen-label">LEVEL 3 — MEMORY CARD</p>
+      <p class="screen-label">LEVEL 3 — ГАЛЕРЕЯ</p>
 
       <div class="gallery-grid" id="gallery-grid">
         <div class="gallery-slot">
           <div class="slot-inner">
-            <span class="slot-placeholder">+ ФОТО 1</span>
+            <img src="static/img/01.JPG" />
           </div>
-          <p class="slot-caption">подпись к моменту</p>
+          <p class="slot-caption">Китайская стена покорена</p>
         </div>
         <div class="gallery-slot">
           <div class="slot-inner">
-            <span class="slot-placeholder">+ ФОТО 2</span>
+            <img src="static/img/02.JPG" />
           </div>
-          <p class="slot-caption">подпись к моменту</p>
+          <p class="slot-caption">пляж 2.0</p>
         </div>
         <div class="gallery-slot">
           <div class="slot-inner">
-            <span class="slot-placeholder">+ ФОТО 3</span>
+            <img src="static/img/03.JPG" />
           </div>
-          <p class="slot-caption">подпись к моменту</p>
+          <p class="slot-caption">долгожданное ведро попкорна</p>
         </div>
         <div class="gallery-slot">
           <div class="slot-inner">
-            <span class="slot-placeholder">+ ФОТО 4</span>
+            <img src="static/img/04.JPG" />
           </div>
-          <p class="slot-caption">подпись к моменту</p>
+          <p class="slot-caption">первая годовщина</p>
         </div>
       </div>
-      <p class="hint-text">замени плейсхолдеры на свои фото — инструкция в файле script.js</p>
     </section>
 
     <!-- ЭКРАН 5: ФИНАЛ -->
@@ -178,23 +188,23 @@
 
       <div class="final-content">
         <p class="final-label" id="final-label">GAME COMPLETE!</p>
-        <p class="final-sub">NEW RECORD UNLOCKED</p>
+        <p class="final-sub">NEW RECORD</p>
 
         <div class="stat-block">
           <div class="stat-row">
-            <span class="stat-label">DAYS TOGETHER</span>
-            <span class="stat-val cyan" id="stat-days">???</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">HUGS GIVEN</span>
-            <span class="stat-val pink">9999+</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-label">HAPPINESS LEVEL</span>
+            <span class="stat-label">УРОВЕНЬ СЧАСТЬЯ</span>
             <span class="stat-val yellow">MAX</span>
           </div>
+          <div class="stat-row">
+            <span class="stat-label">ДНЕЙ ПРОВЕДЕННЫХ ВМЕСТЕ</span>
+            <span class="stat-val pink" id="stat-days">???</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">ТЕБЕ ИСПОЛНИЛОСЬ</span>
+            <span class="stat-val pink">22</span>
+          </div>
           <div class="stat-row no-border">
-            <span class="stat-label">YOU ARE RATED</span>
+            <span class="stat-label">ТВОЙ РАНГ</span>
             <span class="stat-val pink">A+</span>
           </div>
         </div>
