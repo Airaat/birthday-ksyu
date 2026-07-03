@@ -427,7 +427,8 @@ body {
   color: var(--pink);
 }
 
-.card-pink:hover {
+.card-pink:hover,
+.card-pink.kb-focused {
   box-shadow: 0 0 18px rgba(255, 111, 216, 0.45);
 }
 
@@ -439,7 +440,8 @@ body {
   color: var(--cyan);
 }
 
-.card-cyan:hover {
+.card-cyan:hover,
+.card-cyan.kb-focused {
   box-shadow: 0 0 18px rgba(0, 245, 255, 0.45);
 }
 
@@ -451,7 +453,8 @@ body {
   color: var(--yellow);
 }
 
-.card-yellow:hover {
+.card-yellow:hover,
+.card-yellow.kb-focused {
   box-shadow: 0 0 18px rgba(255, 230, 0, 0.45);
 }
 
@@ -463,8 +466,14 @@ body {
   color: var(--purple);
 }
 
-.card-purple:hover {
+.card-purple:hover,
+.card-purple.kb-focused {
   box-shadow: 0 0 18px rgba(176, 111, 255, 0.45);
+}
+
+/* Подсветка карточки при навигации стрелками с клавиатуры — те же стили, что у :hover */
+.menu-card.kb-focused {
+  transform: translateY(-3px);
 }
 
 /* ===========================

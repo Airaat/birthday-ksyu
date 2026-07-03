@@ -89,12 +89,47 @@ function showScreen(id) {
   target.classList.add("active");
   requestAnimationFrame(() => target.classList.add("fade-in"));
   window.scrollTo(0, 0);
+
+  if (id === "screen-menu" && typeof setMenuFocus === "function") {
+    setMenuFocus(menuFocusIndex);
+  }
 }
 
 document.querySelectorAll(".menu-card").forEach(card => {
   card.addEventListener("click", () => {
     playSelectSound();
     showScreen(card.dataset.target);
+  });
+});
+
+/* ===========================================================
+   МЕНЮ: НАВИГАЦИЯ СТРЕЛКАМИ (2 колонки x 2 ряда)
+   =========================================================== */
+const menuCards = Array.from(document.querySelectorAll(".menu-card"));
+const MENU_COLS = 2;
+let menuFocusIndex = 0;
+
+function setMenuFocus(index) {
+  menuFocusIndex = ((index % menuCards.length) + menuCards.length) % menuCards.length;
+  menuCards.forEach((card, i) => {
+    card.classList.toggle("kb-focused", i === menuFocusIndex);
+  });
+}
+
+function moveMenuFocus(dir) {
+  let next = menuFocusIndex;
+  if (dir === "left") next -= 1;
+  if (dir === "right") next += 1;
+  if (dir === "up") next -= MENU_COLS;
+  if (dir === "down") next += MENU_COLS;
+  setMenuFocus(next);
+  playSelectSound();
+}
+
+// Запоминаем, по какой карточке кликнули мышью — чтобы стрелки продолжали оттуда
+menuCards.forEach((card, i) => {
+  card.addEventListener("click", () => {
+    menuFocusIndex = i;
   });
 });
 
@@ -212,7 +247,6 @@ document.getElementById("reason-prev").addEventListener("click", () => {
    PLAY AGAIN — возврат на boot screen
    =========================================================== */
 document.getElementById("btn-replay").addEventListener("click", () => {
-  playSelectSound();
   currentReason = 0;
   showScreen("screen-boot");
   runBootSequence();
@@ -351,12 +385,26 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") document.getElementById("reason-prev").click();
   }
 
-  // TODO: перепиши как нужно
+  if (screenId === "screen-menu") {
+    if (e.key === "ArrowRight") { e.preventDefault(); moveMenuFocus("right"); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); moveMenuFocus("left"); }
+    if (e.key === "ArrowUp") { e.preventDefault(); moveMenuFocus("up"); }
+    if (e.key === "ArrowDown") { e.preventDefault(); moveMenuFocus("down"); }
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      menuCards[menuFocusIndex].click();
+    }
+  }
+
+  if (screenId === "screen-final" && (e.key === "Enter" || e.key === " ")) {
+    e.preventDefault();
+    document.getElementById("btn-replay").click();
+  }
+
   if (screenId !== "screen-menu") {
     if (e.key === "Escape") {
-      const backButtons = document.querySelectorAll(".back-btn").forEach(btn => {
-        btn.click();
-      });
+      const backBtn = activeScreen.querySelector(".back-btn");
+      if (backBtn) backBtn.click();
     }
   }
 });
